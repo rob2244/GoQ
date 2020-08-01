@@ -19,7 +19,9 @@ In GoQ there are two types of messages:
 
 Persistent messages are replicated to an external data store. Since persistent messages are saved to a data store they may be re-delivered in case of pod failure (may change this to replicated across pods instead of extenral store). Transient messages on the other hand, will be lost if the pod fails before delivery.
 
-There is currently no message size limit, but that may change in future iterations
+Message size is currently capped at 4,294,967,296 bytes as this is the maximum size of a protobuf bytes scalar type. However this may change in the future.
+
+All messages will have an hmac sha generated when they are queued which will be verified when the message is recieved by the recieving queue manager.
 
 ### Service Discovery
 

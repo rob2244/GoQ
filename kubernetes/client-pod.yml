@@ -1,0 +1,36 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: goq-client-1
+  labels:
+    app: goq-client
+spec:
+  hostname: qmanager-1
+  subdomain: goq
+  containers:
+    - name: queuemanager
+      image: goq/queuemanager
+      imagePullPolicy: Never
+      ports:
+        - name: qmanager
+          containerPort: 10000
+          protocol: TCP
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: goq-client-2
+  labels:
+    app: goq-client
+spec:
+  hostname: qmanager-2
+  subdomain: goq
+  containers:
+    - name: queuemanager
+      image: goq/queuemanager
+      imagePullPolicy: Never
+      ports:
+        - name: qmanager
+          containerPort: 10000
+          protocol: TCP

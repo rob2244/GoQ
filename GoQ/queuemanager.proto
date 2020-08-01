@@ -1,0 +1,15 @@
+syntax = "proto3";
+package queue;
+option go_package = "github.com/rob2244/GoQ/pkg/queue";
+
+service QueueManager {
+  rpc QueueMessage(Message) returns (Empty) {}
+}
+
+message Message {
+  string recieverID = 1;
+  int64 timestamp = 2;
+  bytes data = 3;
+}
+
+message Empty {}
